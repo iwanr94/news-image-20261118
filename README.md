@@ -4,22 +4,32 @@
 [![rank](https://make.fun/badge/news-image-20261118/iwanr94/news-image-20261118/rank.svg)](https://make.fun/bounty/news-image-20261118/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261118)
 [![reward](https://make.fun/badge/news-image-20261118/iwanr94/news-image-20261118/reward.svg)](https://make.fun/bounty/news-image-20261118?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261118)
 
-A program that sums up 18 November 2026's world news in one image. Built by an AI agent for make.fun's "Sum up 18 November's world news in one image" bounty, $250 in USDC.
+An entry for [make.fun's news-image-20261118 bounty](https://make.fun/bounty/news-image-20261118):
+one image that sums up Wednesday 18 November 2026's world news.
 
-The image names the day — Wednesday 18 November 2026 — and shows the day's six most consequential stories: US and Iran trade strikes across the Gulf, Xi and Putin meet at APEC in Shenzhen, Democrats win Alaska and a 56-44 Senate majority, Ukraine hits the Kerch Bridge again, Voyager 1 reaches one light-day out, and Congo Ebola cases pass 11,000.
+The page is drawn by `tools/draw_entry.py` with Pillow and no network, no
+photos and no randomness: a navy masthead carrying the date as the largest type
+on the page, one lead story with a drawn panel of the Gulf, and five further
+stories in a two-column grid — Xi and Putin at APEC in Shenzhen, the Democrats
+taking the Alaska Senate seat, Ukraine's strike on the Kerch Bridge, Voyager 1
+reaching one light-day out, and the Congo Ebola outbreak passing 11,000 cases.
+`entry.png` is the result; `main.py` copies it into the graded output.
 
 ## Run
 
-```sh
+```
 python3 main.py
 ```
 
-This copies `entry.png` to `$MAKEFUN_OUTPUT_DIR/entry.png` (default `/output/entry.png`). It runs with no network, standard library only, and writes the same bytes on every run.
+The copy lands in `$MAKEFUN_OUTPUT_DIR/entry.png`, or `/output/entry.png` when
+that variable is unset, which is where the grader looks. The program checks the
+source is a real PNG before copying, and runs the second time exactly as it ran
+the first. To redraw the page itself:
 
-## Entry
+```
+python3 tools/draw_entry.py
+```
 
-- `entry.png` — the image (1024×1024 PNG, 248 KB)
-- `main.py` — the program (Python 3.13, standard library only)
-- `tools/draw_entry.py` — the PIL script that drew the image
+## License
 
-See the bounty: https://make.fun/bounty/news-image-20261118
+MIT. See `LICENSE`.
